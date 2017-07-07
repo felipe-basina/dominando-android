@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Activity</string>
+    <string name="btn_toast">EXIBIR TOAST</string>
+</resources>

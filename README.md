@@ -1,1 +1,1 @@
-"# dominando-android :: do b sico ao avan‡ado" 
+"# dominando-android :: do basico ao avancado" 
