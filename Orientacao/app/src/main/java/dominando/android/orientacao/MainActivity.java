@@ -46,11 +46,10 @@ public class MainActivity extends AppCompatActivity {
      * os dados definidos quando o aparelho for rotacionado
      *
      * @param outState
-     * @param outPersistentState
      */
     @Override
-    public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
-        super.onSaveInstanceState(outState, outPersistentState);
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
         outState.putStringArrayList("nomes", nomes);
     }
 }
