@@ -1,5 +1,6 @@
 package dominando.android.orientacao;
 
+import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -20,7 +21,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        nomes = new ArrayList<String>();
+        if (savedInstanceState != null) {
+            nomes = savedInstanceState.getStringArrayList("nomes");
+        } else {
+            nomes = new ArrayList<String>();
+        }
+
         edit = (EditText) findViewById(R.id.editText1);
 
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, nomes);
@@ -33,5 +39,18 @@ public class MainActivity extends AppCompatActivity {
         nomes.add(edit.getText().toString());
         edit.setText(""); // Limpa o campo de texto
         adapter.notifyDataSetChanged(); // Atualiza automaticamente o ListView
+    }
+
+    /**
+     * Método responsável por salvar o estado da activity para que não se perca
+     * os dados definidos quando o aparelho for rotacionado
+     *
+     * @param outState
+     * @param outPersistentState
+     */
+    @Override
+    public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
+        super.onSaveInstanceState(outState, outPersistentState);
+        outState.putStringArrayList("nomes", nomes);
     }
 }
